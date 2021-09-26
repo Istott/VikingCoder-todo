@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {TodoContext} from '../context/store';
 
-function InputTask({taskList, setTaskList, inputTask, setInputTask}){
+function InputTask(){
+    const {taskList, setTaskList, inputTask, setInputTask} = useContext(TodoContext);
     
     function handleSubmit(e) {
         e.preventDefault();
