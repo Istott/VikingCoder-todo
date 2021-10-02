@@ -1,23 +1,16 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {TodoContext} from '../context/store';
 
 function InputTask(){
-    const {taskList, setTaskList, inputTask, setInputTask} = useContext(TodoContext);
+    const { addTask } = useContext(TodoContext);
+    const [inputTask, setInputTask] = useState('');
     
     function handleSubmit(e) {
         e.preventDefault();
-    
-        const newTask = [
-          ...taskList, 
-          {
-            id: Date.now(),
-            taskName: inputTask,
-            completed: false
-          }
-        ]
-        setTaskList(newTask);
+        addTask(inputTask);
         setInputTask('');
     }
+
     return(
         <>
             <form>
